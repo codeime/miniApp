@@ -1,0 +1,48 @@
+@import '../../styles/base.less';
+.fm_selectorPicker {
+    position: fixed;
+    background-color: #fff;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    .pickerViewBox {
+        position: relative;
+        z-index: 101;
+        background-color: #fff;
+        .btnBox {
+            height: 110rpx;
+            display: flex;
+            flex-direction: row;
+            line-height: 110rpx;
+            text-align: center;
+            border-bottom: 1rpx solid #f7f7f7;
+            &>view {
+                font-size: 40rpx;
+            }
+            .cancel,
+            .sure {
+                width: 160rpx;
+            }
+            .cancel {
+                color: #888888;
+            }
+            .sure {
+                color: #1aad19;
+            }
+            .content {
+                flex: auto;
+            }
+        }
+        .pickerView {
+            height: 500rpx;
+            width: 100%;
+            .pickerItem {
+                /*  height: 50rpx !important;
+                line-height: 50rpx; */
+                text-align: center;
+                font-size: @fm_title;
+            }
+        }
+    }
+}

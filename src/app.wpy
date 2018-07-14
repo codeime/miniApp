@@ -1,0 +1,100 @@
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+import libs from "@/libs/index";
+import moment from "@/utils/moment.js"
+import { INDIVIDUAL_ACCESS_TOKEN, ACCESS_TOKEN } from "@/utils/constant";
+
+
+export default class extends wepy.app {
+    config = {
+        pages: [
+            'pages/login/index',
+            'pages/home/index'
+
+        ],
+        tabBar: {
+            color: "#f4f4f4",
+            selectedColor: "#f4f4f4",
+            backgroundColor: "#fff",
+            borderStyle: "white",
+            list: [{
+                "pagePath": "pages/home/index",
+                "text": ""
+            }, {
+                "pagePath": "pages/home/index",
+                "text": ""
+            }]
+        },
+        window: {
+            // enablePullDownRefresh: true,
+            backgroundTextStyle: 'dark',
+            navigationBarBackgroundColor: '#d0021b',
+            navigationBarTitleText: 'demo',
+            navigationBarTextStyle: 'white'
+            //  onReachBottomDistance: 100
+        }
+    }
+
+    globalData = {
+        fieldShow: {},
+        userInfo: null,
+        api: libs.api,
+        ...libs.config
+    }
+
+    constructor() {
+        super()
+        this.use('requestfix');
+        this.use('promisify');
+    }
+
+    onLaunch() {
+        console.log(moment.beijingToLocal('2018-07-12 14:03:55'));
+        console.log(moment.formulateTime('2018-07-10 00:01:55'));
+
+
+        console.log(new Date().toString());
+        /* 把wepy对象上加上globalData */
+        wepy.GlobalData = this.globalData;
+
+        console.log(wepy.$appConfig.env);
+
+        wepy.removeStorageSync(INDIVIDUAL_ACCESS_TOKEN);
+        wepy.removeStorageSync(ACCESS_TOKEN);
+
+        /*global wx*/
+        const updateManager = wx.getUpdateManager()
+
+        updateManager.onCheckForUpdate(function (res) {
+            // 请求完新版本信息的回调
+            console.log(res.hasUpdate)
+        });
+
+        updateManager.onUpdateReady(function () {
+            wx.showModal({
+                title: '更新提示',
+                content: '新版本已经准备好，是否重启应用？',
+                success: function (res) {
+                    if (res.confirm) {
+                        // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                        updateManager.applyUpdate()
+                    }
+                }
+            })
+
+        });
+
+        updateManager.onUpdateFailed(function () {
+            // 新的版本下载失败
+        });
+
+    }
+}
+</script>
+
+<style lang="less">
+@import './styles/icon';
+@import './styles/style';
+@import './styles/file';
+</style>

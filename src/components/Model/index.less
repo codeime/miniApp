@@ -1,0 +1,39 @@
+@import "../../styles/base.less";
+.toast_model {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .model_panel {
+        border-radius: 8rpx;
+        width: 512rpx;
+        background: @fm_white;
+        overflow: hidden;
+        .content_box {
+            padding: 60rpx 32rpx;
+        }
+        .btn_box {
+            display: flex;
+            .cancel_btn,
+            .sure_btn {
+                flex: 1;
+                height: 88rpx;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: @fm_title;
+                font-weight: 600;
+            }
+            .sure_btn {
+                color: @fm_white;
+                background: @fm_red;
+            }
+            .cancel_btn {
+                border-top: 1rpx solid #dfdfdf;
+                color: @fm_c_content;
+            }
+        }
+    }
+    .model_msg {
+        text-align: center;
+    }
+}

@@ -1,0 +1,56 @@
+<template>
+    <view wx:if="{{isShow}}" class="toast_model fm_mask">
+        <view class="model_panel">
+            <view class="content_box">
+                <slot name="content"></slot>
+            </view>
+            <view class="btn_box">
+                <view class="cancel_btn" bindtap="cancel()">取 消</view>
+                <view class="sure_btn" bindtap="sure()">确 定</view>
+            </view>
+        </view>
+    </view>
+</template>
+<script>
+import wepy from "wepy";
+export default class Model extends wepy.component {
+    props = {
+
+    }
+    computed = {
+
+    }
+    data = {
+        callBack: {},
+        isShow: false,
+        msg: ""
+    }
+    methods = {
+        show() {
+            this.isShow = true;
+            let that = this;
+            return new Promise((resolve, reject) => {
+                that.callBack = {
+                    resolve, reject
+                };
+            });
+        },
+        cancel() {
+            this.isShow = false;
+            this.callBack.reject(false);
+
+        },
+        sure() {
+            this.isShow = false;
+            this.callBack.resolve(true);
+        }
+    }
+    onLoad() {
+
+    }
+
+}
+</script>
+<style lang="less">
+@import './index.less';
+</style>

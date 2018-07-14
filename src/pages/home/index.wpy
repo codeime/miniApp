@@ -1,0 +1,50 @@
+
+<template>
+    <view class="container">
+
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import wxRequest from '@/utils/wxRequest';
+
+import Mixins from "@/mixins/index";
+
+export default class Home extends wepy.page {
+    config = {
+        navigationBarTitleText: '',
+        window: {
+
+            enablePullDownRefresh: true
+        }
+    }
+    components = {
+
+    }
+
+    mixins = [Mixins, Toast.mixin]
+
+    data = {
+
+    }
+
+    computed = {
+
+    }
+
+    methods = {
+
+    }
+
+    events = {
+
+    }
+
+
+
+}
+</script>
+<style lang="less" >
+@import './index.less';
+</style>

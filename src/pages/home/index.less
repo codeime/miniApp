@@ -1,0 +1,55 @@
+@import '../../styles/base.less';
+.container {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    .home_box {
+        /*  overflow: auto; */
+        flex: auto;
+        position: relative;
+        z-index: 1;
+        &.blur {
+            filter: blur(5rpx);
+        }
+        .client_list {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            overflow-y: auto;
+            padding-top: @fm_funBarHeight;
+            padding-bottom: @fm_tabBarHeight;
+            .list_item {
+                margin-bottom: 16rpx;
+            }
+            .fm_nodata {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .nomore {
+                text-align: center;
+                padding-bottom: 20rpx;
+                color: @fm_c_comment;
+            }
+            .lookMore {
+                padding: 20rpx 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .btn {
+                    width: 200rpx;
+                    height: 60rpx;
+                    line-height: 60rpx;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .home-toast {
+        position: relative;
+        z-index: 1;
+    }
+}

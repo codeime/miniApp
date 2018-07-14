@@ -1,0 +1,37 @@
+<template>
+
+    <model class="confrimModel">
+        <view slot="content" class="model_msg">{{msg}}</view>
+    </model>
+
+</template>
+<script>
+import wepy from "wepy";
+import Model from "@/components/Model/index";
+export default class Confrim extends wepy.component {
+    props = {
+        msg: {
+            type: String,
+            default: ''
+        }
+    }
+    components = {
+        "model": Model
+    }
+    computed = {
+
+    }
+    data = {
+
+    }
+    methods = {
+        async show() {
+            await this.$invoke('model', 'show');
+        }
+    }
+
+}
+</script>
+<style>
+</style>
+

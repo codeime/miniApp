@@ -1,0 +1,45 @@
+
+<template>
+    <view class="container">
+
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy'
+import util from "@/utils/util";
+import Toast from 'wepy-simple-toast';
+import Mixins from "@/mixins/index";
+import wxRequest from "@/utils/wxRequest";
+
+
+import tip from "@/utils/tip";
+export default class Login extends wepy.page {
+    config = {
+        navigationBarTitleText: ''
+    }
+    components = {
+
+    }
+
+    mixins = [Mixins]
+
+    data = {
+
+    }
+
+    computed = {
+
+    }
+
+    methods = {
+    }
+
+
+
+
+}
+</script>
+<style lang="less">
+@import './index.less';
+</style>

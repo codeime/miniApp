@@ -1,0 +1,82 @@
+
+<template>
+
+    <view class="fm_selectorPicker" wx:if="{{show}}">
+        <view class="fm_mask" bindtap="hide"></view>
+        <view class="pickerViewBox">
+            <view class="btnBox">
+                <view class="cancel" bindtap="hide">取消</view>
+                <view class="content">请选择部门</view>
+                <view class="sure" bindtap="sure">确定</view>
+            </view>
+            <picker-view indicator-style="height: 50px;" class="pickerView" value="{{selected}}" bindchange="change">
+                <picker-view-column>
+                    <repeat for="{{list}}" key="index" index="index" item="item">
+                        <view class="pickerItem" style=" line-height: 50px">{{item.deptName}}</view>
+                    </repeat>
+                </picker-view-column>
+            </picker-view>
+        </view>
+    </view>
+
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Picker extends wepy.component {
+
+    components = {
+
+    }
+    props = {
+        list: {
+            type: Array,
+            default: []
+        }
+    }
+    mixins = []
+
+    data = {
+        show: false,
+        /* 默认选中第一个 */
+        selected: [0],
+        deptItem: {}
+    }
+
+    computed = {
+
+    }
+
+    methods = {
+        hide() {
+            this._hide();
+        },
+        change(e) {
+            const val = e.detail.value;
+            this.deptItem = this.list[val[0]];
+        },
+        sure() {
+            this.$emit("sure", this.deptItem);
+            this.show = false;
+        }
+    }
+
+    events = {
+
+    }
+    _show() {
+        this.deptItem = this.list[0];
+        this.show = true;
+        this.$apply();
+    }
+    _hide() {
+        this.show = false;
+        this.$apply();
+    }
+
+}
+</script>
+<style lang="less">
+@import './index.less';
+</style>
