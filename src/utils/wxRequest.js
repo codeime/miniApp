@@ -4,7 +4,7 @@ import md5 from './md5';
 import tip from './tip';
 import { ACCESS_TOKEN, INDIVIDUAL_ACCESS_TOKEN } from "./constant";
 
-//const API_SECRET_KEY = 'www.fumamx.com'
+//const API_SECRET_KEY = 'www.demo.com'
 //const TIMESTAMP = util.getCurrentTime()
 //const SIGN = md5.hex_md5((TIMESTAMP + API_SECRET_KEY).toLowerCase())
 
