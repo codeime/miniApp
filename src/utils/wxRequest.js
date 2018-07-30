@@ -11,7 +11,6 @@ import { ACCESS_TOKEN, INDIVIDUAL_ACCESS_TOKEN } from "./constant";
 const http = async (url, params = {}) => {
     tip.loading();
 
-
     let data = params.query || {};
 
     data["_@#time"] = util.getCurrentTime();
@@ -26,22 +25,23 @@ const http = async (url, params = {}) => {
             [ACCESS_TOKEN]: wepy.getStorageSync(ACCESS_TOKEN).value
         });
     }
+    /* 丢到外边处理 */
+    return wepy.request({
+        url: url,
+        method: params.method || 'GET',
+        data: data,
+        header: { 'Content-Type': 'application/json' }
+    });
 
-
-    try {
-        let res = await wepy.request({
-            url: url,
-            method: params.method || 'GET',
-            data: data,
-            header: { 'Content-Type': 'application/json' }
-        });
+    /* try {
+        let res = await 
         tip.loaded();
         return res;
     } catch (error) {
         console.log(error);
         tip.loaded();
         tip.error("请求出错");
-    }
+    } */
 
 };
 
