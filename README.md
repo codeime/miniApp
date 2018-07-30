@@ -40,5 +40,14 @@ utils中
 3. moment.js 时区工具 依赖 moment.js库
 4. tip.js 封装了系统的提示（不如用 wepy-simple-toast ）
 5. util.js 常用工具
-6. wxRequst.js 包装下 请求，有token的时候带上token
+6. wxRequst.js 包装下 请求，有token的时候带上token,并为某些特别的方法带上设备的相关信息
+7.WXBizDataCrypt.js 用来解密encryptedData中的信息 ，依赖cryptjs,具体用法：
+```
+  let crypt = new WXBizDataCrypt(appId, session_key);
+
+  let data = crypt.decryptData(encryptedData, iv);
+```
+
+#### 结束
+
 
