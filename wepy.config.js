@@ -38,12 +38,13 @@ module.exports = {
     },
     plugins: {},
     appConfig: {
-        env: process.env.NODE_ENV,
+        isDev: process.env.NODE_ENV !== 'production',
+        API_ENV: process.env.API_ENV,
         noPromiseAPI: ['createSelectorQuery']
     }
 }
 
-if (prod) {
+if(prod) {
 
     // 压缩sass
     // module.exports.compilers['sass'] = {outputStyle: 'compressed'}

@@ -40,7 +40,6 @@ export default class extends wepy.app {
         fieldShow: {},
         userInfo: null,
         api: libs.api,
-        ...libs.config
     }
 
     constructor() {
@@ -50,15 +49,14 @@ export default class extends wepy.app {
     }
 
     onLaunch() {
-        console.log(moment.beijingToLocal('2018-07-12 14:03:55'));
-        console.log(moment.formulateTime('2018-07-10 00:01:55'));
 
 
-        console.log(new Date().toString());
         /* 把wepy对象上加上globalData */
-        wepy.GlobalData = this.globalData;
+        wepy.GlobalData = Object.assign(this.globalData, { ...libs.config.getApi(wepy.$appConfig.API_ENV) });
 
-        console.log(wepy.$appConfig.env);
+        console.log(`isDev:${wepy.$appConfig.isDev}`);
+        console.log(`API_ENV:${wepy.$appConfig.API_ENV}`);
+
 
         wepy.removeStorageSync(INDIVIDUAL_ACCESS_TOKEN);
         wepy.removeStorageSync(ACCESS_TOKEN);

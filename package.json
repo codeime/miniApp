@@ -4,11 +4,12 @@
     "description": "wepy小程序项目骨架",
     "main": "dist/app.js",
     "scripts": {
-        "dev": "rimraf dist && cross-env NODE_ENV=development  wepy build --watch",
-        "build": "rimraf dist && cross-env NODE_ENV=production wepy build --no-cache",
+        "dev": "rimraf dist && cross-env NODE_ENV=development API_ENV=dev wepy build --watch",
+        "test": "rimraf dist && cross-env NODE_ENV=development API_ENV=prod  wepy build --watch",
+        "exp": "rimraf dist && cross-env NODE_ENV=production API_ENV=dev wepy build --no-cache",
+        "build": "rimraf dist && cross-env NODE_ENV=production API_ENV=prod wepy build --no-cache",
         "dev:web": "wepy build --output web",
         "clean": "find ./dist -maxdepth 1 -not -name 'project.config.json' -not -name 'dist' | xargs rm -rf",
-        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "wepy": {
         "module-a": false,
